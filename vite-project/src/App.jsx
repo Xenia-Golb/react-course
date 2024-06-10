@@ -10,18 +10,18 @@ import JournalAddButton from './components/JournalAddButton/JournalAddButton';
 import JournalForm from './components/JournalForm/JournalForm';
 
 const INITIAL_DATA = [
-  {
-    id: 1,
-    title: 'Подготовка к обновлению курсов',
-    data: new Date(),
-    txt: 'Горные походы открывают удивительные природные ландшафты'
-  },
-  {
-    id: 2,
-    title: 'Поход в горы',
-    data: new Date(),
-    txt: 'Думал очень много времени ...'
-  }
+  //{
+  //   id: 1,
+  //   title: 'Подготовка к обновлению курсов',
+  //   data: new Date(),
+  //   txt: 'Горные походы открывают удивительные природные ландшафты'
+  // },
+  // {
+  //   id: 2,
+  //   title: 'Поход в горы',
+  //   data: new Date(),
+  //   txt: 'Думал очень много времени ...'
+  // }
 ];
 function App() {
   const [items, setItems] = useState(INITIAL_DATA);
@@ -30,7 +30,7 @@ function App() {
       txt: item.text,
       title: item.title,
       data: new Date(item.data),
-      id: Math.max(...oldItems.map(item => item.id)) + 1
+      id: oldItems.length > 0 ? Math.max(...oldItems.map(item => item.id)) + 1 : 1
     }]);
   };
   const sortItems = (a, b) => {
