@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import JournalItem from './components/JournalItem/JournalItem';
 import CardButton from './components/CardButton/CardButton';
 import LeftPanel from './layouts/LeftPanel/LeftPanel';
@@ -9,25 +9,29 @@ import JournalList from './components/JournalList/JournalList';
 import JournalAddButton from './components/JournalAddButton/JournalAddButton';
 import JournalForm from './components/JournalForm/JournalForm';
 
-const INITIAL_DATA = [
-  //{
-  //   id: 1,
-  //   title: 'Подготовка к обновлению курсов',
-  //   data: new Date(),
-  //   txt: 'Горные походы открывают удивительные природные ландшафты'
-  // },
-  // {
-  //   id: 2,
-  //   title: 'Поход в горы',
-  //   data: new Date(),
-  //   txt: 'Думал очень много времени ...'
-  // }
-];
 function App() {
-  const [items, setItems] = useState(INITIAL_DATA);
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem('data'));
+    if (data) {
+      setItems(data.map(item => ({
+        ...item,
+        data: new Date(item.data)
+      })));
+    }
+  }, []);
+  useEffect(() => {
+    if (items.length) {
+      localStorage.setItem('data', JSON.stringify(items));
+    }
+
+  }, [items]);
+
+
   const addItem = item => {
     setItems(oldItems => [...oldItems, {
-      txt: item.text,
+      post: item.post,
       title: item.title,
       data: new Date(item.data),
       id: oldItems.length > 0 ? Math.max(...oldItems.map(item => item.id)) + 1 : 1
