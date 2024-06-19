@@ -12,8 +12,10 @@ function App() {
     { id: 2, title: "Fost 2", content: "Hontent 2" },
     { id: 3, title: "Aost 3", content: "Content 3" }
   ]);
-  const [selectedSort, setSelectedSort] = useState('');
-  const [searchQuery, setSearchQuery] = useState('');
+
+  const [filter, setFilter] = useState(sort: '', query: '');
+
+
 
   const sortedPosts = getSortedPosts();
 
@@ -39,21 +41,7 @@ function App() {
     <div className="App">
       <PostForm create={createPost} />
       <hr style={{ margin: '15px 0' }} />
-      <MyInput
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        placeholder='Поиск...'
 
-      />
-      <MySelect
-        value={selectedSort}
-        onChange={sortPosts}
-        defaultValue={'Сортировка по'}
-        options={[
-          { value: 'title', name: 'По названию' },
-          { value: 'body', name: 'По содержимому' },
-        ]}
-      />
       {posts.length !== 0
         ? <PostList remove={removePost} posts={sortedPosts} title={'Посты'} />
         : <div>
