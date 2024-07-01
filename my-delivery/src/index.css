@@ -7,3 +7,8 @@
   --white-color: #FFFFFF;
   --separator-color: #D4D6E0;
 }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
