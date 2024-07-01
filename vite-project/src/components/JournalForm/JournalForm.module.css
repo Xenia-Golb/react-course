@@ -50,3 +50,9 @@
     border: 1px solid red;
     background: #a54d4d;
 }
+
+.svg {
+    width: 30px;
+    padding-right: 15px;
+    height: 30px;
+}

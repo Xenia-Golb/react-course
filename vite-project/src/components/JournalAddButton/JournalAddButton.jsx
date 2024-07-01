@@ -1,13 +1,16 @@
 import CardButton from '../CardButton/CardButton';
 import './JournalAddButton.css';
 
-function JournalAddButton() {
-
+function JournalAddButton({ clearForm }) {
     return (
-        <CardButton className="journal-add">
-            <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 12H20M12 4V20" stroke="rgba(255, 255, 255, 0.40)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
+        <CardButton className="journal-add" onClick={clearForm}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                <path d="M10 4.96265V16.6293" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M4.16669 10.796H15.8334" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
             Новое воспоминание
-        </CardButton >);
+        </CardButton>
+    );
 }
 
 export default JournalAddButton;
